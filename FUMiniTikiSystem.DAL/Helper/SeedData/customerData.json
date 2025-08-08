@@ -1,0 +1,62 @@
+[
+  {
+    "Name": "Alice",
+    "Email": "alice@example.com",
+    "Password": "@1",
+    "IsActive": true
+  },
+  {
+    "Name": "Bob",
+    "Email": "bob@example.com",
+    "Password": "@1",
+    "IsActive": true
+  },
+  {
+    "Name": "Charlie",
+    "Email": "charlie@example.com",
+    "Password": "@1",
+    "IsActive": true
+  },
+  {
+    "Name": "Diana",
+    "Email": "diana@example.com",
+    "Password": "@1",
+    "IsActive": true
+  },
+  {
+    "Name": "Edward",
+    "Email": "edward@example.com",
+    "Password": "@1",
+    "IsActive": true
+  },
+  {
+    "Name": "Fiona",
+    "Email": "fiona@example.com",
+    "Password": "@1",
+    "IsActive": true
+  },
+  {
+    "Name": "George",
+    "Email": "george@example.com",
+    "Password": "@1",
+    "IsActive": true
+  },
+  {
+    "Name": "Hannah",
+    "Email": "hannah@example.com",
+    "Password": "@1",
+    "IsActive": true
+  },
+  {
+    "Name": "Ian",
+    "Email": "ian@example.com",
+    "Password": "@1",
+    "IsActive": true
+  },
+  {
+    "Name": "Jane",
+    "Email": "jane@example.com",
+    "Password": "@1",
+    "IsActive": true
+  }
+]

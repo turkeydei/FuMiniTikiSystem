@@ -1,0 +1,62 @@
+[
+  {
+    "CustomerID": 1,
+    "OrderDate": "2025-07-24T10:00:00",
+    "OrderAmount": 89.99,
+    "OrderStatus": "Completed"
+  },
+  {
+    "CustomerID": 2,
+    "OrderDate": "2025-07-23T14:00:00",
+    "OrderAmount": 120.50,
+    "OrderStatus": "Shipped"
+  },
+  {
+    "CustomerID": 3,
+    "OrderDate": "2025-07-22T09:15:00",
+    "OrderAmount": 15.00,
+    "OrderStatus": "Processing"
+  },
+  {
+    "CustomerID": 4,
+    "OrderDate": "2025-07-21T16:45:00",
+    "OrderAmount": 240.00,
+    "OrderStatus": "Delivered"
+  },
+  {
+    "CustomerID": 5,
+    "OrderDate": "2025-07-20T11:20:00",
+    "OrderAmount": 35.00,
+    "OrderStatus": "Cancelled"
+  },
+  {
+    "CustomerID": 6,
+    "OrderDate": "2025-07-19T13:10:00",
+    "OrderAmount": 200.00,
+    "OrderStatus": "Shipped"
+  },
+  {
+    "CustomerID": 7,
+    "OrderDate": "2025-07-18T17:30:00",
+    "OrderAmount": 60.00,
+    "OrderStatus": "Completed"
+  },
+  {
+    "CustomerID": 8,
+    "OrderDate": "2025-07-17T10:10:00",
+    "OrderAmount": 85.00,
+    "OrderStatus": "Delivered"
+  },
+  {
+    "CustomerID": 9,
+    "OrderDate": "2025-07-16T12:00:00",
+    "OrderAmount": 150.00,
+    "OrderStatus": "Completed"
+  },
+  {
+    "CustomerID": 10,
+    "OrderDate": "2025-07-15T14:00:00",
+    "OrderAmount": 99.99,
+    "OrderStatus": "Processing"
+  }
+]

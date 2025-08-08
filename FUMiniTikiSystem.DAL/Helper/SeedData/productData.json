@@ -1,0 +1,162 @@
+[
+  {
+    "Name": "Laptop",
+    "Description": "High performance laptop",
+    "Price": 10000000,
+    "CategoryID": 2,
+    "Picture": "https://firebasestorage.googleapis.com/v0/b/court-callers.appspot.com/o/Product%2FLaptop.png?alt=media&token=80d83ef0-afd7-4eae-b91a-9171a081bba3",
+    "IsActive": true
+  },
+  {
+    "Name": "Sneakers",
+    "Description": "Comfortable running shoes",
+    "Price": 500000,
+    "CategoryID": 4,
+    "Picture": "https://firebasestorage.googleapis.com/v0/b/court-callers.appspot.com/o/Product%2FSneaker.png?alt=media&token=1bda0271-ab00-4219-b3f4-f490ac0ae72f",
+    "IsActive": true
+  },
+  {
+    "Name": "Blender",
+    "Description": "Smoothie blender",
+    "Price": 100000,
+    "CategoryID": 3,
+    "Picture": "https://firebasestorage.googleapis.com/v0/b/court-callers.appspot.com/o/Product%2FBlender.png?alt=media&token=f9275274-ad38-4122-ba1a-b9c277c7502d",
+    "IsActive": true
+  },
+  {
+    "Name": "Headphones",
+    "Description": "Noise cancelling",
+    "Price": 1000000,
+    "CategoryID": 2,
+    "Picture": "https://firebasestorage.googleapis.com/v0/b/court-callers.appspot.com/o/Product%2FHeadphones.png?alt=media&token=bd03f8ef-516a-421e-98cb-f0a240c79272",
+    "IsActive": true
+  },
+  {
+    "Name": "Backpack",
+    "Description": "Waterproof bag",
+    "Price": 200000,
+    "CategoryID": 4,
+    "Picture": "https://firebasestorage.googleapis.com/v0/b/court-callers.appspot.com/o/Product%2FBackpack.png?alt=media&token=5a2d3282-3c88-4ecb-a889-7962f9b4b434",
+    "IsActive": true
+  },
+  {
+    "Name": "Notebook",
+    "Description": "College ruled",
+    "Price": 50000,
+    "CategoryID": 9,
+    "Picture": "https://firebasestorage.googleapis.com/v0/b/court-callers.appspot.com/o/Product%2FNotebook.png?alt=media&token=1fbfdc41-b652-4a87-b73c-5868af1e460e",
+    "IsActive": true
+  },
+  {
+    "Name": "Basketball",
+    "Description": "Outdoor size",
+    "Price": 300000,
+    "CategoryID": 7,
+    "Picture": "https://firebasestorage.googleapis.com/v0/b/court-callers.appspot.com/o/Product%2FBasketball.png?alt=media&token=6ae956fc-be59-40d8-b4b0-065e86f41db3",
+    "IsActive": true
+  },
+  {
+    "Name": "Lipstick",
+    "Description": "Matte finish",
+    "Price": 300000,
+    "CategoryID": 6,
+    "Picture": "https://firebasestorage.googleapis.com/v0/b/court-callers.appspot.com/o/Product%2FLipstick.png?alt=media&token=b0912bfe-1926-447a-8f9f-391b019522b8",
+    "IsActive": true
+  },
+  {
+    "Name": "Chocolate",
+    "Description": "Dark chocolate",
+    "Price": 50000,
+    "CategoryID": 8,
+    "Picture": "https://firebasestorage.googleapis.com/v0/b/court-callers.appspot.com/o/Product%2FChocolate.png?alt=media&token=f514ae2b-bca4-4eb2-bbaa-5f0e48b9606a",
+    "IsActive": true
+  },
+  {
+    "Name": "Novel",
+    "Description": "Bestselling fiction",
+    "Price": 150000,
+    "CategoryID": 1,
+    "Picture": "https://firebasestorage.googleapis.com/v0/b/court-callers.appspot.com/o/Product%2FNovel.png?alt=media&token=2f09b190-fd67-431b-ac8e-6c2392816591",
+    "IsActive": true
+  },
+  {
+    "Name": "Tablet",
+    "Description": "Lightweight and portable",
+    "Price": 7000000,
+    "CategoryID": 2,
+    "Picture": "https://firebasestorage.googleapis.com/v0/b/court-callers.appspot.com/o/Product%2FTablet.png?alt=media&token=fe9eec85-d705-4e14-83e1-02ed4e84b3e4",
+    "IsActive": true
+  },
+  {
+    "Name": "Dress",
+    "Description": "Summer floral dress",
+    "Price": 450000,
+    "CategoryID": 4,
+    "Picture": "https://firebasestorage.googleapis.com/v0/b/court-callers.appspot.com/o/Product%2FDress.jpeg?alt=media&token=e87b9a43-ea58-4ee0-a7f5-86fb57661e29",
+    "IsActive": true
+  },
+  {
+    "Name": "Microwave",
+    "Description": "Compact kitchen microwave",
+    "Price": 1200000,
+    "CategoryID": 3,
+    "Picture": "https://firebasestorage.googleapis.com/v0/b/court-callers.appspot.com/o/Product%2FMicrowave.png?alt=media&token=1dda446b-8c0c-4f38-85f1-e401ede2df29",
+    "IsActive": true
+  },
+  {
+    "Name": "Puzzle",
+    "Description": "1000-piece jigsaw puzzle",
+    "Price": 150000,
+    "CategoryID": 5,
+    "Picture": "https://firebasestorage.googleapis.com/v0/b/court-callers.appspot.com/o/Product%2FPuzzle.png?alt=media&token=bd67c28c-d546-4d9d-b3d2-a5e33e88252f",
+    "IsActive": true
+  },
+  {
+    "Name": "Shampoo",
+    "Description": "Nourishing shampoo",
+    "Price": 90000,
+    "CategoryID": 6,
+    "Picture": "https://firebasestorage.googleapis.com/v0/b/court-callers.appspot.com/o/Product%2FShampoo.png?alt=media&token=0fb24269-7076-422a-8b0a-589e8ccb6481",
+    "IsActive": true
+  },
+  {
+    "Name": "Yoga Mat",
+    "Description": "Non-slip surface",
+    "Price": 350000,
+    "CategoryID": 7,
+    "Picture": "https://firebasestorage.googleapis.com/v0/b/court-callers.appspot.com/o/Product%2FYoga%20Mat.png?alt=media&token=d571cd3d-e819-4a84-9aa1-d7bf0cd74d2f",
+    "IsActive": true
+  },
+  {
+    "Name": "Organic Tea",
+    "Description": "Green tea blend",
+    "Price": 80000,
+    "CategoryID": 8,
+    "Picture": "https://firebasestorage.googleapis.com/v0/b/court-callers.appspot.com/o/Product%2FOrganic%20Tea.png?alt=media&token=bfe9831d-bc08-4294-b736-7f7ec768dddc",
+    "IsActive": true
+  },
+  {
+    "Name": "Desk Organizer",
+    "Description": "Wooden storage for office",
+    "Price": 250000,
+    "CategoryID": 9,
+    "Picture": "https://firebasestorage.googleapis.com/v0/b/court-callers.appspot.com/o/Product%2FDesk%20Organizer.png?alt=media&token=a2054f7e-d100-429e-9ed8-88d970975ea1",
+    "IsActive": true
+  },
+  {
+    "Name": "Watering Can",
+    "Description": "2L plastic can",
+    "Price": 60000,
+    "CategoryID": 10,
+    "Picture": "https://firebasestorage.googleapis.com/v0/b/court-callers.appspot.com/o/Product%2FWatering%20Can.png?alt=media&token=e9068dde-e40d-42ef-be00-25aa00b73ece",
+    "IsActive": true
+  },
+  {
+    "Name": "Cookbook",
+    "Description": "Easy recipes for beginners",
+    "Price": 180000,
+    "CategoryID": 1,
+    "Picture": "https://firebasestorage.googleapis.com/v0/b/court-callers.appspot.com/o/Product%2FCookbook.png?alt=media&token=dc416912-23ce-49cc-849b-c5850fe4fd39",
+    "IsActive": true
+  }
+]

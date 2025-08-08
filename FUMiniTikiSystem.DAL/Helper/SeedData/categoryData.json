@@ -1,0 +1,62 @@
+[
+  {
+    "Name": "Books",
+    "Picture": "https://firebasestorage.googleapis.com/v0/b/court-callers.appspot.com/o/Category%2FBooks.png?alt=media&token=e0ca0590-dbe3-45c6-9a95-790b7f59a0aa",
+    "Description": "Books of all genres",
+    "IsActive": true
+  },
+  {
+    "Name": "Electronics",
+    "Picture": "https://firebasestorage.googleapis.com/v0/b/court-callers.appspot.com/o/Category%2FElectronics.png?alt=media&token=393c9cbe-641f-4f7c-8b63-5e37c8318b8c",
+    "Description": "Gadgets and accessories",
+    "IsActive": true
+  },
+  {
+    "Name": "Home",
+    "Picture": "https://firebasestorage.googleapis.com/v0/b/court-callers.appspot.com/o/Category%2FHomes.png?alt=media&token=e5a86bcc-ed79-4df6-8d93-5b161cb28a8d",
+    "Description": "Home appliances and decor",
+    "IsActive": true
+  },
+  {
+    "Name": "Fashion",
+    "Picture": "https://firebasestorage.googleapis.com/v0/b/court-callers.appspot.com/o/Category%2FFashion.png?alt=media&token=57ba58ec-9340-4200-9782-6743a1174955",
+    "Description": "Clothing and accessories",
+    "IsActive": true
+  },
+  {
+    "Name": "Toys",
+    "Picture": "https://firebasestorage.googleapis.com/v0/b/court-callers.appspot.com/o/Category%2FToys.png?alt=media&token=1cc698de-cdef-4fdd-9ca8-c5e16f53cfbe",
+    "Description": "Toys and games for kids",
+    "IsActive": true
+  },
+  {
+    "Name": "Beauty",
+    "Picture": "https://firebasestorage.googleapis.com/v0/b/court-callers.appspot.com/o/Category%2FBeauty.png?alt=media&token=cbbbfe6d-c488-4a14-9e5c-5dc49d4029b4",
+    "Description": "Cosmetics and skincare",
+    "IsActive": true
+  },
+  {
+    "Name": "Sports",
+    "Picture": "https://firebasestorage.googleapis.com/v0/b/court-callers.appspot.com/o/Category%2FSports.png?alt=media&token=c719b513-05aa-4b1f-a583-6394050d22ed",
+    "Description": "Fitness and sports gear",
+    "IsActive": true
+  },
+  {
+    "Name": "Food",
+    "Picture": "https://firebasestorage.googleapis.com/v0/b/court-callers.appspot.com/o/Category%2FFood.png?alt=media&token=6a1e4067-32d9-40e2-8044-23a6b612341d",
+    "Description": "Snacks and groceries",
+    "IsActive": true
+  },
+  {
+    "Name": "Office",
+    "Picture": "https://firebasestorage.googleapis.com/v0/b/court-callers.appspot.com/o/Category%2FOffice.png?alt=media&token=e36b9219-444d-401a-be82-97c585fb856e",
+    "Description": "Office supplies and equipment",
+    "IsActive": true
+  },
+  {
+    "Name": "Garden",
+    "Picture": "https://firebasestorage.googleapis.com/v0/b/court-callers.appspot.com/o/Category%2FGarden.png?alt=media&token=e6a1546f-573d-49e7-a387-0a8d3dcd1713",
+    "Description": "Outdoor and garden tools",
+    "IsActive": true
+  }
+]
