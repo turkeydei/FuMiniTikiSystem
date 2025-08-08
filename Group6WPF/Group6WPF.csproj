@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\account.png" />
+    <None Remove="Assets\cart.png" />
+    <None Remove="Assets\placeholder.png" />
+    <None Remove="Assets\tiki.png" />
+    <None Remove="Assets\vnpay.jpg" />
+  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.1" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
+	</ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FUMiniTikiSystem.BLL\FUMiniTikiSystem.BLL.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\account.png" />
+    <Resource Include="Assets\cart.png" />
+    <Resource Include="Assets\placeholder.png" />
+    <Resource Include="Assets\tiki.png" />
+    <Resource Include="Assets\vnpay.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

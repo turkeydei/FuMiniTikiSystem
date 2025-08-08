@@ -1,0 +1,69 @@
+<Window x:Class="Group6WPF.CustomerDetailWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Group6WPF"
+        mc:Ignorable="d"
+        Title="Customer Detail" Height="700" Width="500"
+        Background="{StaticResource BackgroundBrush}"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+
+    <Grid Background="#F7F8FA">
+        <Border Width="500" Padding="30" Background="White" CornerRadius="16" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="16" ShadowDepth="0" Opacity="0.18"/>
+            </Border.Effect>
+            <StackPanel>
+                <Button x:Name="btnBackToAdmin" Content="← Back to Customer List" Width="160" Height="34" Background="#2196F3" Foreground="White" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10" Click="BackButton_Click"/>
+                <TextBlock x:Name="TitleTextBlock" Text="Edit Customer" FontSize="28" FontWeight="Bold" Foreground="#4B5CF0" HorizontalAlignment="Center" Margin="0,0,0,24"/>
+                        
+                <!-- Customer ID (Read-only for edit mode) -->
+                <StackPanel Orientation="Vertical" Margin="0,0,0,10">
+                    <TextBlock Text="Customer ID" FontWeight="SemiBold" FontSize="16"/>
+                    <TextBox x:Name="CustomerIDTextBox" Height="34" IsReadOnly="True"/>
+                </StackPanel>
+                
+                <!-- Name -->
+                <StackPanel Orientation="Vertical" Margin="0,0,0,10">
+                    <TextBlock Text="Name" FontWeight="SemiBold" FontSize="16"/>
+                    <TextBox x:Name="NameTextBox" Height="34"/>
+                </StackPanel>
+                
+                <!-- Email -->
+                <StackPanel Orientation="Vertical" Margin="0,0,0,10">
+                    <TextBlock Text="Email" FontWeight="SemiBold" FontSize="16"/>
+                    <TextBox x:Name="EmailTextBox" Height="34"/>
+                </StackPanel>
+                
+                <!-- Password -->
+                <StackPanel Orientation="Vertical" Margin="0,0,0,10">
+                    <TextBlock Text="Password" FontWeight="SemiBold" FontSize="16"/>
+                    <PasswordBox x:Name="PasswordBox" Height="34"/>
+                </StackPanel>
+                
+                <!-- Confirm Password -->
+                <StackPanel Orientation="Vertical" Margin="0,0,0,10">
+                    <TextBlock Text="Confirm Password" FontWeight="SemiBold" FontSize="16"/>
+                    <PasswordBox x:Name="ConfirmPasswordBox" Height="34"/>
+                </StackPanel>
+                
+                <!-- Status -->
+                <StackPanel Orientation="Vertical" Margin="0,0,0,10">
+                    <TextBlock Text="Status" FontWeight="SemiBold" FontSize="16"/>
+                    <ComboBox x:Name="StatusComboBox" Height="34">
+                        <ComboBoxItem Content="Active" IsSelected="True"/>
+                        <ComboBoxItem Content="Inactive"/>
+                    </ComboBox>
+                </StackPanel>
+                
+                <!-- Action Buttons -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+                    <Button x:Name="btnSave" Content="Save" Width="120" Height="38" Background="#4CAF50" Foreground="White" FontWeight="Bold" Click="SaveButton_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window> 

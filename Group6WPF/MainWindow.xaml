@@ -1,0 +1,349 @@
+﻿<Window x:Class="Group6WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Group6WPF"
+        mc:Ignorable="d"
+        Title="FUMiniTiki" Height="800" Width="1500"
+        Background="{StaticResource BackgroundBrush}"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize" Loaded="Window_Loaded">
+
+    <!-- Main Grid Container -->
+    <Grid>
+        <!-- Main Content - DockPanel -->
+        <DockPanel Width="1200" HorizontalAlignment="Center" Background="White">
+
+            <!-- HEADER -->
+            <Border DockPanel.Dock="Top" Height="70" Background="White" BorderBrush="#EBEBF0" BorderThickness="0,0,0,1">
+                <Grid VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Logo as a button -->
+                    <Button Grid.Column="0"
+                Background="Transparent"
+                BorderThickness="0"
+                Cursor="Hand"
+                ToolTip="Back to Home"
+                Click="LogoButton_Click"
+                Margin="20,0,10,0"
+                Width="110"
+                Height="40">
+                        <Image Source="Assets/tiki.png" Stretch="Uniform"/>
+                    </Button>
+
+                    <!-- Search -->
+                    <Border Grid.Column="1" Height="40" Margin="20,0" VerticalAlignment="Center"
+                    Background="#F8F8FF" BorderBrush="{StaticResource BorderColor}" 
+                    BorderThickness="1" CornerRadius="8">
+                        <TextBox x:Name="SearchTextBox" Height="38" Padding="15,0" FontSize="14" BorderThickness="0"
+                         Background="Transparent" VerticalAlignment="Center"
+                         Text="Search product by name..."
+                         Foreground="{StaticResource TextSecondary}" LostFocus="SearchTextBox_LostFocus" GotFocus="SearchTextBox_GotFocus" KeyDown="SearchTextBox_KeyDown"/>
+                    </Border>
+
+                    <!-- Account Icon -->
+                    <Button x:Name="btnProfile" Grid.Column="3" Margin="10,0" Width="40" Height="40"
+                    Background="Transparent" BorderThickness="0" ToolTip="Account"
+                    Cursor="Hand" Click="btnProfile_Click">
+                        <Image Source="Assets/account.png" Stretch="Uniform"/>
+                    </Button>
+
+                    <!-- Cart Icon -->
+                    <Grid Grid.Column="4" Margin="10,0">
+                        <Button x:Name="btnViewCart" Width="40" Height="40"
+            Background="Transparent" BorderThickness="0" ToolTip="Shopping Cart"
+            Cursor="Hand" Click="btnViewCart_Click">
+                            <Image Source="Assets/cart.png" Stretch="Uniform"/>
+                        </Button>
+
+                        <!-- Cart Count Badge -->
+                        <Border x:Name="CartBadge" 
+            Width="20" Height="20" 
+            CornerRadius="10"
+            Background="#FF424E"
+            HorizontalAlignment="Right" 
+            VerticalAlignment="Top"
+            Margin="0,-5,-5,0"
+            Visibility="Collapsed">
+                            <TextBlock x:Name="CartCountText" 
+                   Text="0" 
+                   Foreground="White" 
+                   FontSize="10" 
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"/>
+                        </Border>
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <!-- MAIN CONTENT AREA -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="230"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- LEFT SIDEBAR - CATEGORIES -->
+                <Border Grid.Column="0" Background="#F9F9F9" BorderBrush="#DDD" BorderThickness="0,0,1,0" Padding="10" Margin="0,0,0,63">
+                    <StackPanel>
+                        <TextBlock Text="Danh mục" FontWeight="Bold" FontSize="16" Margin="0,0,0,10" Foreground="#222"/>
+
+                        <ListBox x:Name="CategoryListBox"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             Foreground="Black"
+                             FontSize="14"
+                             Cursor="Hand"
+                             Margin="0">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Background="Transparent"
+                        BorderThickness="0"
+                        Foreground="Black"
+                        HorizontalContentAlignment="Left"
+                        Padding="4"
+                        ToolTip="{Binding Description}">
+                                        <TextBlock Text="{Binding Name}" FontSize="14" VerticalAlignment="Center"/>
+                                    </Button>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+                    </StackPanel>
+                </Border>
+
+                <!-- PRODUCT GRID AREA -->
+                <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="0,0,0,63">
+                    <StackPanel Margin="30,20,30,30">
+
+                        <!-- Section Title -->
+                        <TextBlock Text="🔥 TOP DEAL"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Foreground="{StaticResource PrimaryBrush}"
+                       Margin="0,10,0,25"
+                       HorizontalAlignment="Left"/>
+
+                        <!-- Product Cards Container - 4 items per row -->
+                        <UniformGrid x:Name="ProductGrid"
+                         Columns="4"
+                         HorizontalAlignment="Stretch"
+                         Margin="0,10"/>
+                        <!-- Add this after the ProductGrid, inside the StackPanel -->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
+                            <Button x:Name="btnPrevious" Content="← Previous" 
+                Width="100" Height="35" Margin="5,0"
+                 BorderBrush="#DDD"
+                Cursor="Hand" Click="btnPrevious_Click"/>
+
+                            <TextBlock x:Name="txtPageInfo" 
+                   Text="Page 1 of 1" 
+                   VerticalAlignment="Center" 
+                   Margin="20,0" FontSize="14"/>
+
+                            <Button x:Name="btnNext" Content="Next →" 
+                Width="100" Height="35" Margin="5,0"
+                 BorderBrush="#DDD"
+                Cursor="Hand" Click="btnNext_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+        </DockPanel>
+
+        <!-- Messenger-Style AI Chat Box -->
+        <!-- Minimized Chat Button -->
+        <Border x:Name="MinimizedChatBubble"
+                Width="60" Height="60"
+                Background="#FF424E"
+                CornerRadius="30"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"
+                Margin="0,0,30,30"
+                Cursor="Hand"
+                MouseLeftButtonDown="ChatBubble_Click"
+                Visibility="Collapsed">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="3" Opacity="0.3"/>
+            </Border.Effect>
+            <Grid>
+                <TextBlock Text="🤖" 
+                          FontSize="24" 
+                          HorizontalAlignment="Center" 
+                          VerticalAlignment="Center"/>
+                <!-- Notification Badge -->
+                <Border x:Name="NotificationBadge"
+                        Width="20" Height="20"
+                        Background="#FF0000"
+                        CornerRadius="10"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Margin="0,-2,-2,0"
+                        Visibility="Collapsed">
+                    <TextBlock x:Name="NotificationCount"
+                              Text="1"
+                              Foreground="White"
+                              FontSize="10"
+                              FontWeight="Bold"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"/>
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- Expanded Chat Box -->
+        <Border x:Name="ExpandedChatBox"
+                Width="320" Height="450"
+                Background="White"
+                CornerRadius="12"
+                BorderBrush="#E0E0E0"
+                BorderThickness="1"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"
+                Margin="0,0,30,30"
+                Visibility="Visible">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="20" ShadowDepth="5" Opacity="0.2" Color="Black"/>
+            </Border.Effect>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+                <!-- Chat Header -->
+                <Border Grid.Row="0" 
+                        Background="#FF424E" 
+                        CornerRadius="12,12,0,0">
+                    <Grid Margin="15,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Ellipse Grid.Column="0"
+                                Width="30" Height="30"
+                                Fill="White"
+                                VerticalAlignment="Center">
+                        </Ellipse>
+                        <TextBlock Grid.Column="0"
+                                  Text="🤖"
+                                  FontSize="16"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+
+                        <StackPanel Grid.Column="1" 
+                                   Orientation="Vertical" 
+                                   Margin="10,0,0,0"
+                                   VerticalAlignment="Center">
+                            <TextBlock Text="AI Assistant"
+                                      FontWeight="Bold"
+                                      FontSize="14"
+                                      Foreground="White"/>
+                            <TextBlock x:Name="OnlineStatus"
+                                      Text="● Online"
+                                      FontSize="10"
+                                      Foreground="#E0FFE0"/>
+                        </StackPanel>
+
+                        <Button Grid.Column="2"
+                               Width="30" Height="30"
+                               Background="Transparent"
+                               BorderThickness="0"
+                               Cursor="Hand"
+                               Click="MinimizeChat_Click"
+                               ToolTip="Minimize chat">
+                            <TextBlock Text="−" 
+                                      FontSize="18" 
+                                      FontWeight="Bold"
+                                      Foreground="White"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                        </Button>
+                    </Grid>
+                </Border>
+
+                <!-- Chat Messages Area -->
+                <ScrollViewer Grid.Row="1" 
+                              x:Name="ChatScrollViewer"
+                              VerticalScrollBarVisibility="Auto"
+                              Padding="10"
+                              Background="#FAFAFA">
+                    <StackPanel x:Name="ChatHistoryPanel">
+                        <!-- Welcome Message -->
+                        <Border Background="White"
+                               CornerRadius="15,15,15,5"
+                               Padding="12,8"
+                               Margin="0,5,50,5"
+                               HorizontalAlignment="Left">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="3" ShadowDepth="1" Opacity="0.1"/>
+                            </Border.Effect>
+                            <TextBlock Text="Hi! I'm your AI shopping assistant. How can I help you today? 😊"
+                                      TextWrapping="Wrap"
+                                      FontSize="13"
+                                      Foreground="#333"/>
+                        </Border>
+                    </StackPanel>
+                </ScrollViewer>
+
+                <!-- Chat Input Area -->
+                <Border Grid.Row="2" 
+                        Background="White"
+                        BorderBrush="#E0E0E0"
+                        BorderThickness="0,1,0,0"
+                        CornerRadius="0,0,12,12">
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0"
+                               Background="#F5F5F5"
+                               CornerRadius="20"
+                               Padding="15,8" Margin="0,-53,0,0">
+                            <TextBox x:Name="AiMessageTextBox"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    FontSize="13"
+                                    VerticalAlignment="Center"
+                                    Text="Type a message..."
+                                    Foreground="#999"
+                                    GotFocus="AiMessageTextBox_GotFocus"
+                                    LostFocus="AiMessageTextBox_LostFocus"
+                                    KeyDown="AiMessageTextBox_KeyDown"/>
+                        </Border>
+
+                        <Button Grid.Column="1"
+                               Width="35" Height="35"
+                               Background="#FF424E"
+                               BorderThickness="0"
+                               Margin="8,0,0,0"
+                               Cursor="Hand"
+                               Click="SendAIMessage_Click">
+                            <TextBlock Text="→" 
+                                      FontSize="16" 
+                                      FontWeight="Bold"
+                                      Foreground="White"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                        </Button>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

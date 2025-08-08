@@ -1,0 +1,276 @@
+﻿<Window x:Class="Group6WPF.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Group6WPF"
+        mc:Ignorable="d"
+        Title="Admin Dashboard - FUMiniTiki" Height="800" Width="1500"
+        Background="{StaticResource BackgroundBrush}"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- LEFT SIDEBAR -->
+        <StackPanel Grid.Column="0" Background="#4B5CF0" VerticalAlignment="Stretch">
+            <TextBlock Text="Admin Panel" Foreground="White" FontWeight="Bold" FontSize="28" Margin="20,30,0,40"/>
+
+            <!-- Dashboard Button -->
+            <Button x:Name="btnDashboard"
+                    Content="📊 Dashboard"
+                    Width="250"
+                    Height="50"
+                    Margin="20,0,20,10"
+                    FontSize="18"
+                    Background="#5A6CFF"
+                    Foreground="White"
+                    FontWeight="Bold"
+                    BorderThickness="0"
+                    HorizontalAlignment="Left"
+                    Click="BtnDashboard_Click"/>
+
+            <Button x:Name="btnManageProduct"
+                    Content="📦 Manage Product"
+                    Width="250"
+                    Height="50"
+                    Margin="20,0,20,10"
+                    FontSize="18"
+                    Background="#6C7BFF"
+                    Foreground="White"
+                    FontWeight="Bold"
+                    BorderThickness="0"
+                    HorizontalAlignment="Left"
+                    Click="BtnManageProduct_Click"/>
+
+            <Button x:Name="btnManageOrder"
+                    Content="🛒 Manage Order"
+                    Width="250"
+                    Height="50"
+                    Margin="20,0,20,10"
+                    FontSize="18"
+                    Background="#6C7BFF"
+                    Foreground="White"
+                    FontWeight="Bold"
+                    BorderThickness="0"
+                    HorizontalAlignment="Left" 
+                    Click="btnManageOrder_Click"/>
+
+            <Button x:Name="btnManageCustomer"
+                    Content="👥 Manage Customer"
+                    Width="250"
+                    Height="50"
+                    Margin="20,0,20,10"
+                    FontSize="18"
+                    Background="#6C7BFF"
+                    Foreground="White"
+                    FontWeight="Bold"
+                    BorderThickness="0"
+                    HorizontalAlignment="Left"
+                    Click="BtnManageCustomer_Click"/>
+
+            <Button x:Name="btnManageCategory"
+                     Content="📂 Manage Category"
+                     Width="250"
+                     Height="50"
+                     Margin="20,0,20,10"
+                     FontSize="18"
+                     Background="#6C7BFF"
+                     Foreground="White"
+                     FontWeight="Bold"
+                     BorderThickness="0"
+                     HorizontalAlignment="Left" 
+                     Click="BtnManageCategory_Click"/>
+
+            <!-- Logout Button at Bottom -->
+            <Button x:Name="btnLogout"
+                    Content="🚪 Logout"
+                    Width="250"
+                    Height="40"
+                    Margin="20,50,20,20"
+                    FontSize="16"
+                    Background="#FF4444"
+                    Foreground="White"
+                    FontWeight="Bold"
+                    BorderThickness="0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"
+                    Click="BtnLogout_Click"/>
+        </StackPanel>
+
+        <!-- MAIN CONTENT AREA -->
+        <Grid Grid.Column="1" Background="#F7F8FA">
+            <!-- Dashboard Content -->
+            <ScrollViewer x:Name="DashboardContent" VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="30">
+                    <!-- Header -->
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,30">
+                        <TextBlock Text="🏠 Admin Dashboard" FontSize="32" FontWeight="Bold" Foreground="#333"/>
+                        <TextBlock x:Name="txtCurrentTime" Text="" FontSize="16" Foreground="#666" VerticalAlignment="Bottom" Margin="20,0,0,5"/>
+                    </StackPanel>
+
+                    <!-- Statistics Cards -->
+                    <Grid Margin="0,0,0,30">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Total Products Card -->
+                        <Border Grid.Column="0" Background="#4CAF50" CornerRadius="10" Margin="0,0,15,0" Height="120">
+                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock Text="📦" FontSize="32" HorizontalAlignment="Center" Foreground="White"/>
+                                <TextBlock x:Name="txtTotalProducts" Text="0" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Foreground="White"/>
+                                <TextBlock Text="Total Products" FontSize="14" HorizontalAlignment="Center" Foreground="White"/>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Total Orders Card -->
+                        <Border Grid.Column="1" Background="#2196F3" CornerRadius="10" Margin="0,0,15,0" Height="120">
+                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock Text="🛒" FontSize="32" HorizontalAlignment="Center" Foreground="White"/>
+                                <TextBlock x:Name="txtTotalOrders" Text="0" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Foreground="White"/>
+                                <TextBlock Text="Total Orders" FontSize="14" HorizontalAlignment="Center" Foreground="White"/>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Total Customers Card -->
+                        <Border Grid.Column="2" Background="#FF9800" CornerRadius="10" Margin="0,0,15,0" Height="120">
+                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock Text="👥" FontSize="32" HorizontalAlignment="Center" Foreground="White"/>
+                                <TextBlock x:Name="txtTotalCustomers" Text="0" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Foreground="White"/>
+                                <TextBlock Text="Total Customers" FontSize="14" HorizontalAlignment="Center" Foreground="White"/>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Total Revenue Card -->
+                        <Border Grid.Column="3" Background="#9C27B0" CornerRadius="10" Height="120">
+                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock Text="💰" FontSize="32" HorizontalAlignment="Center" Foreground="White"/>
+                                <TextBlock x:Name="txtTotalRevenue" Text="0đ" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Foreground="White"/>
+                                <TextBlock Text="Total Revenue" FontSize="14" HorizontalAlignment="Center" Foreground="White"/>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+
+                    <!-- Quick Actions -->
+                    <Border Background="White" CornerRadius="10" Padding="20" Margin="0,0,0,20">
+                        <StackPanel>
+                            <TextBlock Text="⚡ Quick Actions" FontSize="20" FontWeight="Bold" Foreground="#333" Margin="0,0,0,15"/>
+                            <UniformGrid Columns="3" Rows="2">
+                                <Button x:Name="btnQuickAddProduct" Content="➕ Add New Product" Margin="5" Height="50" Background="#4CAF50" Foreground="White" FontWeight="Bold" Click="BtnQuickAddProduct_Click"/>
+                                <Button x:Name="btnQuickViewOrders" Content="📋 View Recent Orders" Margin="5" Height="50" Background="#2196F3" Foreground="White" FontWeight="Bold" Click="btnManageOrder_Click"/>
+                                <Button x:Name="btnQuickViewCustomers" Content="👤 View Customers" Margin="5" Height="50" Background="#FF9800" Foreground="White" FontWeight="Bold" Click="BtnManageCustomer_Click"/>
+                            </UniformGrid>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Charts Section -->
+                    <Grid Margin="0,0,0,20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Sales Chart -->
+                        <Border Grid.Column="0" Background="White" CornerRadius="10" Padding="20" Margin="0,0,10,0">
+                            <StackPanel>
+                                <TextBlock Text="📈 Dayly Sales" FontSize="18" FontWeight="Bold" Foreground="#333" Margin="0,0,0,15"/>
+                                <Canvas x:Name="SalesChart" Height="200" Background="#F8F9FA">
+                                    <!-- Sales chart will be drawn here programmatically -->
+                                </Canvas>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                                    <TextBlock Text="📊 Last 6 Months Sales Trend" FontSize="12" Foreground="#666"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Category Distribution Chart -->
+                        <Border Grid.Column="1" Background="White" CornerRadius="10" Padding="20" Margin="10,0,0,0">
+                            <StackPanel>
+                                <TextBlock Text="🥧 Product Categories" FontSize="18" FontWeight="Bold" Foreground="#333" Margin="0,0,0,15"/>
+                                <StackPanel x:Name="CategoryChart" Height="200">
+                                    <!-- Category distribution will be shown here -->
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+
+                    <!-- Order Status Chart -->
+                    <Border Background="White" CornerRadius="10" Padding="20">
+                        <StackPanel>
+                            <TextBlock Text="📊 Order Status Overview" FontSize="18" FontWeight="Bold" Foreground="#333" Margin="0,0,0,15"/>
+                            <Grid Height="150">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Pending Orders -->
+                                <StackPanel Grid.Column="0" Margin="10">
+                                    <TextBlock Text="⏳ Pending" FontSize="14" FontWeight="Bold" Foreground="#FF9800" HorizontalAlignment="Center"/>
+                                    <ProgressBar x:Name="progressPending" Height="20" Margin="0,10" Background="#E0E0E0" Foreground="#FF9800" Value="0"/>
+                                    <TextBlock x:Name="txtPendingCount" Text="0" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                </StackPanel>
+
+                                <!-- Processing Orders -->
+                                <StackPanel Grid.Column="1" Margin="10">
+                                    <TextBlock Text="⚙️ Processing" FontSize="14" FontWeight="Bold" Foreground="#2196F3" HorizontalAlignment="Center"/>
+                                    <ProgressBar x:Name="progressProcessing" Height="20" Margin="0,10" Background="#E0E0E0" Foreground="#2196F3" Value="0"/>
+                                    <TextBlock x:Name="txtProcessingCount" Text="0" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                </StackPanel>
+
+                                <!-- Completed Orders -->
+                                <StackPanel Grid.Column="2" Margin="10">
+                                    <TextBlock Text="✅ Completed" FontSize="14" FontWeight="Bold" Foreground="#4CAF50" HorizontalAlignment="Center"/>
+                                    <ProgressBar x:Name="progressCompleted" Height="20" Margin="0,10" Background="#E0E0E0" Foreground="#4CAF50" Value="0"/>
+                                    <TextBlock x:Name="txtCompletedCount" Text="0" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                </StackPanel>
+
+                                <!-- Cancelled Orders -->
+                                <StackPanel Grid.Column="3" Margin="10">
+                                    <TextBlock Text="❌ Cancelled" FontSize="14" FontWeight="Bold" Foreground="#F44336" HorizontalAlignment="Center"/>
+                                    <ProgressBar x:Name="progressCancelled" Height="20" Margin="0,10" Background="#E0E0E0" Foreground="#F44336" Value="0"/>
+                                    <TextBlock x:Name="txtCancelledCount" Text="0" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </ScrollViewer>
+
+            <!-- Product Management Content (Hidden by default) -->
+            <StackPanel x:Name="ProductManagementContent" Visibility="Collapsed" Margin="30">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,0,0,20">
+                    <TextBlock Text="📦 Product Management" FontSize="28" FontWeight="Bold" Foreground="#333"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                    <Button x:Name="btnAddProduct" Content="Add Product" Width="120" Height="35" Background="#4CAF50" Foreground="White" FontWeight="Bold" Margin="0,0,10,0"/>
+                    <Button x:Name="btnEditProduct" Content="Edit Product" Width="120" Height="35" Background="#2196F3" Foreground="White" FontWeight="Bold" Margin="0,0,10,0"/>
+                    <Button x:Name="btnDeleteProduct" Content="Delete Product" Width="120" Height="35" Background="#F44336" Foreground="White" FontWeight="Bold" Margin="0,0,20,0"/>
+                    <TextBlock Text="Search Product by nmae:" VerticalAlignment="Center" FontSize="16" Margin="0,0,10,0"/>
+                    <TextBox x:Name="txtSearchProduct" Width="200" Height="30" FontFamily="Segoe UI" FontSize="14"/>
+                    <Button x:Name="btnReload" Content="Reload" Width="100" Height="35" Background="#FF9800" Foreground="White" FontWeight="Bold" Margin="20,0,0,0"/>
+                </StackPanel>
+                <DataGrid x:Name="dgProducts" AutoGenerateColumns="False" Height="400" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding ProductID}" Width="60"/>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="200"/>
+                        <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="300"/>
+                        <DataGridTextColumn Header="Price" Binding="{Binding Price}" Width="100"/>
+                        <DataGridTextColumn Header="Category" Binding="{Binding Category.Name}" Width="150"/>
+                        <DataGridTextColumn Header="Picture" Binding="{Binding Picture}" Width="200"/>
+                        <DataGridCheckBoxColumn Header="Active" Binding="{Binding IsActive}" Width="80"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

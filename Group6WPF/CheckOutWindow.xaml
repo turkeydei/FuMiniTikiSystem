@@ -1,0 +1,187 @@
+﻿<Window x:Class="Group6WPF.CheckOutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Group6WPF"
+        mc:Ignorable="d"
+        Title="Checkout - FUMiniTiki" Height="800" Width="1200"
+        Background="#F5F5FA"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize" Loaded="Window_Loaded">
+
+    <DockPanel Width="1000" HorizontalAlignment="Center" Background="White">
+
+        <!-- HEADER -->
+        <Border DockPanel.Dock="Top" Height="70" Background="White" BorderBrush="#EBEBF0" BorderThickness="0,0,0,1">
+            <Grid VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Logo as a button -->
+                <Button Grid.Column="0"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Cursor="Hand"
+                        ToolTip="Back to Home"
+                        Click="LogoButton_Click"
+                        Margin="20,0,10,0"
+                        Width="110"
+                        Height="40">
+                    <Image Source="Assets/tiki.png" Stretch="Uniform"/>
+                </Button>
+
+                <!-- Checkout Title -->
+                <TextBlock Grid.Column="1" Text="Checkout" FontSize="24" FontWeight="Bold"
+                          Foreground="{StaticResource TextPrimary}" VerticalAlignment="Center" Margin="20,0"/>
+            </Grid>
+        </Border>
+
+        <!-- MAIN CONTENT -->
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="30,20,30,30">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- LEFT: Customer Information & Order Items -->
+                <StackPanel Grid.Column="0" Margin="0,0,20,0">
+
+                    <!-- Customer Information -->
+                    <Border Background="White" CornerRadius="12" BorderBrush="{StaticResource BorderColor}" 
+                           BorderThickness="1" Margin="0,0,0,20" Padding="25">
+                        <StackPanel>
+                            <TextBlock Text="📋 Customer Information" FontSize="18" FontWeight="Bold"
+                                      Foreground="{StaticResource TextPrimary}" Margin="0,0,0,15"/>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,10,10">
+                                    <TextBlock Text="Full Name:" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                    <TextBlock x:Name="CustomerNameText" Text="" Foreground="{StaticResource TextSecondary}"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Row="0" Grid.Column="1" Margin="10,0,0,10">
+                                    <TextBlock Text="Email:" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                    <TextBlock x:Name="CustomerEmailText" Text="" Foreground="{StaticResource TextSecondary}"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,10,10">
+                                    <TextBlock Text="ID:" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                    <TextBlock x:Name="CustomerIDText" Text="" Foreground="{StaticResource TextSecondary}"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Order Items -->
+                    <Border Background="White" CornerRadius="12" BorderBrush="{StaticResource BorderColor}" 
+                           BorderThickness="1" Padding="25">
+                        <StackPanel>
+                            <TextBlock Text="🛒 Order Items" FontSize="18" FontWeight="Bold"
+                                      Foreground="{StaticResource TextPrimary}" Margin="0,0,0,15"/>
+
+                            <StackPanel x:Name="OrderItemsPanel">
+                                <!-- Order items will be added here dynamically -->
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                </StackPanel>
+
+                <!-- RIGHT: Payment & Order Summary -->
+                <StackPanel Grid.Column="1">
+
+                    <!-- Payment Method -->
+                    <Border Background="White" CornerRadius="12" BorderBrush="{StaticResource BorderColor}" 
+                           BorderThickness="1" Margin="0,0,0,20" Padding="25">
+                        <StackPanel>
+                            <TextBlock Text="💳 Payment Method" FontSize="18" FontWeight="Bold"
+                                      Foreground="{StaticResource TextPrimary}" Margin="0,0,0,15"/>
+
+                            <Border BorderBrush="{StaticResource BorderColor}" BorderThickness="1" 
+                                   CornerRadius="8" Padding="15" Background="#F8F8FF">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="Assets/vnpay.jpg" Width="40" Height="40" Margin="0,0,10,0"/>
+                                    <StackPanel VerticalAlignment="Center">
+                                        <TextBlock Text="VNPay" FontWeight="SemiBold" FontSize="14"/>
+                                        <TextBlock Text="Secure payment gateway" FontSize="12" 
+                                                  Foreground="{StaticResource TextSecondary}"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Order Summary -->
+                    <Border Background="White" CornerRadius="12" BorderBrush="{StaticResource BorderColor}" 
+                           BorderThickness="1" Padding="25">
+                        <Border.Effect>
+                            <DropShadowEffect Color="Gray" Direction="315" ShadowDepth="2" 
+                                            Opacity="0.1" BlurRadius="10"/>
+                        </Border.Effect>
+                        <StackPanel>
+
+                            <TextBlock Text="Order Summary" FontSize="18" FontWeight="Bold"
+                                      Foreground="{StaticResource TextPrimary}" Margin="0,0,0,20"/>
+
+                            <!-- Price Breakdown -->
+                            <StackPanel Margin="0,0,0,15">
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                                    <TextBlock Text="Subtotal:" Foreground="{StaticResource TextSecondary}"/>
+                                    <TextBlock x:Name="SubtotalTextBlock" Text="0₫" HorizontalAlignment="Right" 
+                                              Foreground="{StaticResource TextPrimary}" FontWeight="SemiBold"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                                    <TextBlock Text="Shipping:" Foreground="{StaticResource TextSecondary}"/>
+                                    <TextBlock Text="Free" HorizontalAlignment="Right" 
+                                              Foreground="{StaticResource TextPrimary}" FontWeight="SemiBold"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <Separator Background="{StaticResource BorderColor}" Margin="0,10"/>
+
+                            <!-- Total -->
+                            <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
+                                <TextBlock Text="Total:" FontSize="16" FontWeight="Bold" 
+                                          Foreground="{StaticResource TextPrimary}"/>
+                                <TextBlock x:Name="TotalTextBlock" Text="0₫" HorizontalAlignment="Right" 
+                                          FontSize="18" FontWeight="Bold" Foreground="{StaticResource TikiRed}"/>
+                            </StackPanel>
+
+                            <!-- Place Order Button -->
+                            <Button x:Name="PlaceOrderButton" Content="Place Order" 
+                                   Style="{StaticResource ModernButtonStyle}"
+                                   Background="{StaticResource TikiRed}" Height="50" FontSize="16"
+                                   Margin="0,0,0,15" Click="PlaceOrderButton_Click"/>
+
+                            <!-- Back to Cart -->
+                            <Button Content="Back to Cart" 
+                                   Style="{StaticResource ModernButtonStyle}"
+                                   Background="Transparent" Foreground="{StaticResource TikiBlue}"
+                                   BorderBrush="{StaticResource TikiBlue}" BorderThickness="2"
+                                   Click="BackToCartButton_Click"/>
+
+                        </StackPanel>
+                    </Border>
+
+                </StackPanel>
+
+            </Grid>
+        </ScrollViewer>
+
+    </DockPanel>
+</Window>

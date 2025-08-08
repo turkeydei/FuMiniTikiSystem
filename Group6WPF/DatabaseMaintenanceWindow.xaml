@@ -1,0 +1,44 @@
+<Window x:Class="Group6WPF.DatabaseMaintenanceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Group6WPF"
+        mc:Ignorable="d"
+        Title="Database Maintenance" Height="600" Width="500"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+
+    <Grid Background="#F7F8FA">
+        <Border Width="450" Padding="30" Background="White" CornerRadius="16" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="16" ShadowDepth="0" Opacity="0.18"/>
+            </Border.Effect>
+            <StackPanel>
+                <TextBlock Text="Database Maintenance" FontSize="24" FontWeight="Bold" Foreground="#4B5CF0" HorizontalAlignment="Center" Margin="0,0,0,30"/>
+                
+                <TextBlock Text="Fix Identity Seed Issues" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,10"/>
+                <TextBlock Text="This will reset the auto-increment counters for all tables to start from 1 again." 
+                          FontSize="12" Foreground="#666" TextWrapping="Wrap" Margin="0,0,0,20"/>
+                
+                <Button x:Name="btnResetIdentitySeeds" Content="Reset Identity Seeds" 
+                       Width="200" Height="40" Background="#4CAF50" Foreground="White" 
+                       FontWeight="Bold" Margin="0,0,0,20" Click="btnResetIdentitySeeds_Click"/>
+                
+                <Separator Margin="0,0,0,20"/>
+                
+                <TextBlock Text="Clear All Data" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,10"/>
+                <TextBlock Text="⚠️ WARNING: This will delete ALL data in the database and reset identity seeds." 
+                          FontSize="12" Foreground="#F44336" TextWrapping="Wrap" Margin="0,0,0,20"/>
+                
+                <Button x:Name="btnClearAllData" Content="Clear All Data" 
+                       Width="200" Height="40" Background="#F44336" Foreground="White" 
+                       FontWeight="Bold" Margin="0,0,0,20" Click="btnClearAllData_Click"/>
+                
+                <Button x:Name="btnClose" Content="Close" 
+                       Width="100" Height="35" Background="#2196F3" Foreground="White" 
+                       FontWeight="Bold" HorizontalAlignment="Center" Click="btnClose_Click"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window> 

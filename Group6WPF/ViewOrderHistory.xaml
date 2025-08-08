@@ -1,0 +1,203 @@
+﻿<Window x:Class="Group6WPF.ViewOrderHistory"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Group6WPF"
+        mc:Ignorable="d"
+        Title="Order Details - FUMiniTiki" Height="700" Width="1000"
+        Background="{StaticResource BackgroundBrush}" 
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResize"
+        MinHeight="600" MinWidth="800">
+
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="40">
+
+                <!-- Header -->
+                <Grid Margin="0,0,0,30">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="📋 Order Details" FontSize="24" FontWeight="Bold"
+                                   Foreground="{StaticResource TikiBlue}" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <Button Content="✕ Close" Style="{StaticResource ModernButtonStyle}"
+                            Background="Transparent" Foreground="{StaticResource TextSecondary}"
+                            BorderBrush="{StaticResource BorderColor}" BorderThickness="1"
+                            HorizontalAlignment="Right" Click="CloseButton_Click"/>
+                </Grid>
+
+                <!-- Order Summary Card -->
+                <Border Background="White" CornerRadius="12" 
+                        BorderBrush="{StaticResource BorderColor}" BorderThickness="1"
+                        Padding="25" Margin="0,0,0,25">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0">
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                <TextBlock Text="Order ID: " FontSize="16" FontWeight="SemiBold"
+                                           Foreground="{StaticResource TextPrimary}"/>
+                                <TextBlock x:Name="OrderIdText" Text="#12345" FontSize="16" FontWeight="Bold"
+                                           Foreground="{StaticResource TikiBlue}"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                <TextBlock Text="📅 Order Date: " FontSize="14"
+                                           Foreground="{StaticResource TextSecondary}"/>
+                                <TextBlock x:Name="OrderDateText" Text="Loading..." FontSize="14"
+                                           Foreground="{StaticResource TextPrimary}"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                <TextBlock Text="📦 Total Items: " FontSize="14"
+                                           Foreground="{StaticResource TextSecondary}"/>
+                                <TextBlock x:Name="TotalItemsText" Text="Loading..." FontSize="14"
+                                           Foreground="{StaticResource TextPrimary}"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" HorizontalAlignment="Right">
+                            <Border x:Name="OrderStatusBorder" Background="{StaticResource TikiBlue}" 
+                                    CornerRadius="15" Padding="15,8" Margin="0,0,0,10">
+                                <TextBlock x:Name="OrderStatusText" Text="Processing" FontSize="12" 
+                                           FontWeight="SemiBold" Foreground="White"
+                                           HorizontalAlignment="Center"/>
+                            </Border>
+
+                            <TextBlock Text="Total Amount" FontSize="12" 
+                                       Foreground="{StaticResource TextSecondary}"
+                                       HorizontalAlignment="Center"/>
+                            <TextBlock x:Name="OrderAmountText" Text="0₫" FontSize="20" FontWeight="Bold"
+                                       Foreground="{StaticResource TikiRed}" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- Order Items -->
+                <Border Background="White" CornerRadius="12" 
+                        BorderBrush="{StaticResource BorderColor}" BorderThickness="1"
+                        Padding="25">
+
+                    <StackPanel>
+                        <TextBlock Text="🛍️ Order Items" FontSize="18" FontWeight="Bold"
+                                   Foreground="{StaticResource TextPrimary}" Margin="0,0,0,20"/>
+
+                        <DataGrid x:Name="dgOrderDetail"
+                                  AutoGenerateColumns="False"
+                                  IsReadOnly="True"
+                                  RowBackground="White"
+                                  AlternatingRowBackground="#F8F9FA"
+                                  GridLinesVisibility="Horizontal"
+                                  HeadersVisibility="Column"
+                                  ColumnHeaderHeight="45"
+                                  RowHeight="50"
+                                  BorderBrush="{StaticResource BorderColor}"
+                                  BorderThickness="1"
+                                  FontSize="14"
+                                  CanUserReorderColumns="False"
+                                  CanUserSortColumns="False"
+                                  SelectionMode="Single"
+                                  HorizontalGridLinesBrush="{StaticResource BorderColor}">
+
+                            <DataGrid.ColumnHeaderStyle>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="Background" Value="#F8F9FA"/>
+                                    <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+                                    <Setter Property="FontWeight" Value="SemiBold"/>
+                                    <Setter Property="Padding" Value="15,10"/>
+                                    <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
+                                    <Setter Property="BorderThickness" Value="0,0,1,1"/>
+                                </Style>
+                            </DataGrid.ColumnHeaderStyle>
+
+                            <DataGrid.CellStyle>
+                                <Style TargetType="DataGridCell">
+                                    <Setter Property="Padding" Value="15,10"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="DataGridCell">
+                                                <Border Background="{TemplateBinding Background}" 
+                                                        Padding="{TemplateBinding Padding}">
+                                                    <ContentPresenter VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </DataGrid.CellStyle>
+
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="🛍️ Product Name" 
+                                                    Binding="{Binding Product.Name}" 
+                                                    Width="*" MinWidth="200"/>
+                                <DataGridTextColumn Header="📦 Quantity" 
+                                                    Binding="{Binding Quantity}" 
+                                                    Width="120">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="TextAlignment" Value="Center"/>
+                                            <Setter Property="FontWeight" Value="SemiBold"/>
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Header="💰 Unit Price" 
+                                                    Binding="{Binding UnitPrice, StringFormat='{}{0:N0}₫'}" 
+                                                    Width="150">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="TextAlignment" Value="Right"/>
+                                            <Setter Property="Foreground" Value="{StaticResource TikiRed}"/>
+                                            <Setter Property="FontWeight" Value="SemiBold"/>
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <!-- Order Summary -->
+                        <Border Background="#F8F9FA" CornerRadius="8" Padding="20" Margin="0,20,0,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="200"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="1">
+                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                        <TextBlock Text="Subtotal: " FontSize="14" 
+                                                   Foreground="{StaticResource TextSecondary}"/>
+                                        <TextBlock x:Name="SubtotalText" Text="0₫" FontSize="14" FontWeight="SemiBold"
+                                                   Foreground="{StaticResource TextPrimary}" HorizontalAlignment="Right"/>
+                                    </StackPanel>
+
+                                    <Separator Background="{StaticResource BorderColor}" Margin="0,5"/>
+
+                                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                        <TextBlock Text="Total: " FontSize="16" FontWeight="Bold"
+                                                   Foreground="{StaticResource TextPrimary}"/>
+                                        <TextBlock Text="{Binding ElementName=OrderAmountText, Path=Text}" 
+                                                   FontSize="18" FontWeight="Bold"
+                                                   Foreground="{StaticResource TikiRed}" HorizontalAlignment="Right"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+
+                        <!-- Action Buttons -->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,25,0,0">
+                            <Button Content="← Back to Profile" Style="{StaticResource ModernButtonStyle}"
+                                    Background="Transparent" Foreground="{StaticResource TikiBlue}"
+                                    BorderBrush="{StaticResource TikiBlue}" BorderThickness="2"
+                                    Click="BackToProfileButton_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

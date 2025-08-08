@@ -1,0 +1,135 @@
+﻿<Window x:Class="Group6WPF.ManageOrderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Group6WPF"
+        mc:Ignorable="d"
+        Title="Order Management" Height="720" Width="1200" FontSize="18" Background="#FFA2D8FF" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Label Content="Search order by customer name or date:" HorizontalAlignment="Left" Height="36" Margin="10,23,0,0" VerticalAlignment="Top" Width="349" RenderTransformOrigin="0.012,0.682" FontWeight="Bold"/>
+
+            <DataGrid x:Name="dgOrder" SelectionChanged="dgOrder_SelectionChanged" IsReadOnly="True" AutoGenerateColumns="False" CanUserAddRows="False" SelectionMode="Single" Background="#FF7D7D7D" BorderBrush="Black" BorderThickness="1" RowBackground="White" Margin="10,74,0,259" >
+                <DataGrid.Columns >
+                    <DataGridTextColumn Header="ID" Binding="{Binding OrderID}" Width="30"/>
+                    <DataGridTextColumn Header="Customer Name" Binding="{Binding Customer.Name}" Width="178"/>
+                    <DataGridTextColumn Header="Order Date" Binding="{Binding OrderDate, StringFormat='dd/MM/yyyy'}" Width="110"/>
+                    <DataGridTextColumn Header="Order Amount" Binding="{Binding OrderAmount}" Width="130"/>
+                    <DataGridTextColumn Header="Order Status" Binding="{Binding OrderStatus}" Width="110"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <TextBox x:Name="txtSearch" Height="28" Margin="359,27,10,0" TextChanged="txtSearch_TextChanged" VerticalAlignment="Top" />
+
+            <Label Content="Order Details" FontSize="30" HorizontalAlignment="Left" Height="55" Margin="10,444,0,0" VerticalAlignment="Top" Width="208" RenderTransformOrigin="0.287,0.985" FontWeight="Bold"/>
+            <Label HorizontalAlignment="Left"
+               Height="59"
+               Width="174"
+               Margin="10,511,0,0"
+               VerticalAlignment="Top"
+               FontWeight="Bold">
+                <TextBlock Text="Search order detail by product name:"
+               TextWrapping="Wrap" Height="52" Width="167"/>
+            </Label>
+
+            <TextBox x:Name="txtSearchD" Height="28" Margin="10,575,393,0" TextChanged="txtSearchD_TextChanged" VerticalAlignment="Top" />
+
+            <DataGrid x:Name="dgOrderDetail" AutoGenerateColumns="False" SelectionChanged="dgOrderDetail_SelectionChanged" HorizontalAlignment="Left" Height="230" Margin="247,444,0,0" VerticalAlignment="Top" Width="353">
+                <DataGrid.Columns >
+                    <DataGridTextColumn Header="Product Name" Binding="{Binding Product.Name}" Width="130"/>
+                    <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="90"/>
+                    <DataGridTextColumn Header="Unit Price" Binding="{Binding UnitPrice}" Width="95"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <GroupBox HorizontalAlignment="Center" Height="664" Header="Current Order" VerticalAlignment="Center" Width="580">
+                <Grid Margin="0,0,-2,0" Height="636">
+
+                    <Label Content="ID" HorizontalAlignment="Left" Height="30" Margin="123,38,0,0" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.012,0.682"/>
+                    <TextBox x:Name="txtId" IsReadOnly="True" HorizontalAlignment="Left" Height="30" Margin="285,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100"/>
+
+                    <Label Content="Customer Name" HorizontalAlignment="Left" Height="30" Margin="123,88,0,0" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.278,0.57"/>
+                    <ComboBox x:Name="cbCustomerName" HorizontalAlignment="Left" Height="30" Margin="285,90,0,0" VerticalAlignment="Top" Width="200" SelectionChanged="ComboBox_SelectionChanged">
+                        <ComboBox.OpacityMask>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="Black"/>
+                                <GradientStop Color="White" Offset="1"/>
+                            </LinearGradientBrush>
+                        </ComboBox.OpacityMask>
+                    </ComboBox>
+
+                    <Label Content="Order Amount" HorizontalAlignment="Left" Height="30" Margin="123,173,0,0" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.278,0.57"/>
+                    <TextBox x:Name="txtOrderAmount" HorizontalAlignment="Left" Height="30" Margin="285,173,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+
+                    <Label Content="Order Date" HorizontalAlignment="Left" Height="30" Margin="123,130,0,0" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.278,0.57"/>
+                    <DatePicker x:Name="dpOrderDate" HorizontalAlignment="Left" Height="30" Margin="285,130,0,0" VerticalAlignment="Top" Width="200"/>
+
+                    <Label Content="Order Status" HorizontalAlignment="Left" Height="30" Margin="123,216,0,0" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.287,0.985"/>
+                    <ComboBox x:Name="cbOrderStatus" HorizontalAlignment="Left" Height="30" Margin="285,216,0,0" VerticalAlignment="Top" Width="200" SelectionChanged="ComboBox_SelectionChanged">
+                        <ComboBox.OpacityMask>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="Black"/>
+                                <GradientStop Color="White" Offset="1"/>
+                            </LinearGradientBrush>
+                        </ComboBox.OpacityMask>
+                        <ComboBoxItem Content="Processing"/>
+                        <ComboBoxItem Content="Shipped"/>
+                        <ComboBoxItem Content="Delivered"/>
+                        <ComboBoxItem Content="Cancelled"/>
+                        <ComboBoxItem Content="Completed"/>
+                    </ComboBox>
+
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,268,0,0">
+                        <Button x:Name="btnRefresh" Content="Refresh" Width="120" Height="50" Margin="10,0" Click="btnRefresh_Click"/>
+                        <Button x:Name="btnAdd" Content="Add" Width="120" Height="50" Margin="10,0" Click="btnAdd_Click"/>
+                        <Button x:Name="btnEdit" Content="Update" Width="120" Height="50" Margin="10,0" Click="btnEdit_Click"/>
+                        <Button x:Name="btnDelete" Content="Delete" Width="120" Height="50" Margin="10,0" Click="btnDelete_Click"/>
+                    </StackPanel>
+
+
+                    <GroupBox HorizontalAlignment="Center" Height="293" Header="Current Order Detail" VerticalAlignment="Top" Width="550" Margin="0,333,0,0">
+                        <Grid Margin="2,0,-2,0">
+
+                            <Label Content="Product Name" HorizontalAlignment="Left" Height="30" Margin="104,31,0,0" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.012,0.682"/>
+                            <ComboBox x:Name="cbProductName" HorizontalAlignment="Left" Height="30" Margin="269,31,0,0" VerticalAlignment="Top" Width="200" SelectionChanged="ComboBox_SelectionChanged">
+                                <ComboBox.OpacityMask>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="Black"/>
+                                        <GradientStop Color="White" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </ComboBox.OpacityMask>
+                            </ComboBox>
+
+                            <Label Content="Quantity" HorizontalAlignment="Left" Height="44" Margin="104,82,0,0" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.012,0.682"/>
+                            <TextBox x:Name="txtQuantity" HorizontalAlignment="Left" Height="30" Margin="269,82,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+
+                            <Label Content="Unit Price" HorizontalAlignment="Left" Height="30" Margin="104,131,0,0" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.012,0.682"/>
+                            <TextBox x:Name="txtUnitPrice" HorizontalAlignment="Left" Height="30" Margin="269,131,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+
+
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,192,0,0">
+                                <Button x:Name="btnRefreshD" Content="Refresh" Width="120" Height="50" Click="btnRefreshD_Click"/>
+                                <Button x:Name="btnAddD" Content="Add" Width="120" Height="50" Margin="10,0" Click="btnAddD_Click"/>
+                                <Button x:Name="btnEditD" Content="Update" Width="120" Height="50" Margin="10,0" Click="btnEditD_Click"/>
+                                <Button x:Name="btnDeleteD" Content="Delete" Width="120" Height="50" Margin="10,0" Click="btnDeleteD_Click"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+
+
+            </GroupBox>
+        </Grid>
+
+    </Grid>
+</Window>

@@ -1,0 +1,88 @@
+﻿<Window x:Class="Group6WPF.SignUpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Group6WPF"
+        mc:Ignorable="d"
+        Title="Sign Up - FUMiniTiki"
+        Height="500" Width="500"
+        Background="{StaticResource BackgroundBrush}"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+
+    <Grid>
+        <!-- Centered Card -->
+        <Border Width="420" Height="440"
+                Background="White"
+                CornerRadius="10"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Padding="20">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="3" Opacity="0.3"/>
+            </Border.Effect>
+
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <!-- Title -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Email Label -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Email TextBox -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Name Label -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Name TextBox -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Password Label -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Password -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Confirm Pass Label -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Confirm Pass -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Button -->
+                </Grid.RowDefinitions>
+
+                <!-- Title -->
+                <TextBlock Text="Sign Up"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           Foreground="{StaticResource PrimaryBrush}"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,20"/>
+
+                <!-- Email -->
+                <TextBlock Text="Email" Grid.Row="1" FontWeight="SemiBold" Margin="0,0,0,4"/>
+                <TextBox x:Name="txtEmail" Grid.Row="2" Height="34" Margin="0,0,0,10" HorizontalAlignment="Stretch"/>
+
+                <!-- Name -->
+                <TextBlock Text="Name" Grid.Row="3" FontWeight="SemiBold" Margin="0,0,0,4"/>
+                <TextBox x:Name="txtName" Grid.Row="4" Height="34" Margin="0,0,0,10" HorizontalAlignment="Stretch"/>
+
+                <!-- Password -->
+                <TextBlock Text="Password" Grid.Row="5" FontWeight="SemiBold" Margin="0,0,0,4"/>
+                <PasswordBox x:Name="txtPassword" Grid.Row="6" Height="34" Margin="0,0,0,10" HorizontalAlignment="Stretch"/>
+
+                <!-- Confirm Password -->
+                <TextBlock Text="Confirm Password" Grid.Row="7" FontWeight="SemiBold" Margin="0,0,0,4"/>
+                <PasswordBox x:Name="txtConfirmPassword" Grid.Row="8" Height="34" Margin="0,0,0,15" HorizontalAlignment="Stretch"/>
+
+                <!-- Sign Up Button -->
+                <Button x:Name="btnSignUp"
+                        Grid.Row="9"
+                        Content="Sign Up"
+                        Height="40"
+                        Background="{StaticResource PrimaryBrush}"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        Cursor="Hand"
+                        HorizontalAlignment="Stretch"
+                        Click="btnSignUp_Click"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
